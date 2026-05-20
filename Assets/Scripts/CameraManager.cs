@@ -7,18 +7,36 @@ public class CameraManager : MonoBehaviour
     #region Variables
 
     private Vector2 _delta;
-
     private bool _isMoving;
     private bool _isRotating;
     private bool _isBusy;
 
     private float _xRotation;
 
+    private Camera camera;
+    private float zoomTarget;
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float rotationSpeed = 0.5f;
+    [SerializeField] private Vector2 minmax = new Vector2(1,10);
+    [SerializeField]private float multiplier = 2f, smoothTime = .1f;
+    private float velocity = 0f;
+
+
 
     #endregion
 
+    void Start()
+    {
+        camera = GetComponent<Camera>();
+        zoomTarget = camera.fieldOfView;
+    }
+    void Update()
+    {
+        zoomTarget -= Input.GetAxisRaw("Mouse ScrollWheel")*multiplier;
+        zoomTarget = Mathf.Clamp(zoomTarget, minmax.x, minmax.y);
+        camera.fieldOfView = Mathf.SmoothDamp(camera.fieldOfView, zoomTarget,
+        ref velocity, smoothTime);
+    }
     private void Awake()
     {
         _xRotation = transform.rotation.eulerAngles.x;
