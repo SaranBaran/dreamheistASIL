@@ -17,7 +17,7 @@ public class CameraManager : MonoBehaviour
     private float zoomTarget;
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float rotationSpeed = 0.5f;
-    [SerializeField] private Vector2 minmax = new Vector2(1,10);
+    [SerializeField] private Vector2 minmax = new Vector2(1,20);
     [SerializeField]private float multiplier = 2f, smoothTime = .1f;
     private float velocity = 0f;
 
@@ -28,13 +28,21 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         camera = GetComponent<Camera>();
-        zoomTarget = camera.fieldOfView;
+        zoomTarget = camera.orthographicSize;
     }
     void Update()
     {
+        /*
+        if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+             camera.orthographicSize += 1; //Change values according to your requirements
+         }
+        if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+             camera.orthographicSize -= 1;
+         }
+         */
         zoomTarget -= Input.GetAxisRaw("Mouse ScrollWheel")*multiplier;
         zoomTarget = Mathf.Clamp(zoomTarget, minmax.x, minmax.y);
-        camera.fieldOfView = Mathf.SmoothDamp(camera.fieldOfView, zoomTarget,
+        camera.orthographicSize = Mathf.SmoothDamp(camera.orthographicSize, zoomTarget,
         ref velocity, smoothTime);
     }
     private void Awake()
