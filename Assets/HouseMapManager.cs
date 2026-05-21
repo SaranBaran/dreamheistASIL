@@ -8,6 +8,10 @@ public class HouseMapManager : MonoBehaviour
     public GameObject panel;
     public Camera camera;
     private bool textOpened = false;
+    public float dragSpeed = 2;
+    private bool camMoving = false;
+    private Vector3 velocity = new Vector3(0f, 0f, 0f);
+
 
     void Start()
     {
@@ -18,6 +22,10 @@ public class HouseMapManager : MonoBehaviour
 
     void Update()
     {
+        if (camMoving)
+        {
+            moveCamera();
+        }
         if (Input.GetMouseButton(0))
         {
             if (!textOpened)
@@ -43,9 +51,19 @@ public class HouseMapManager : MonoBehaviour
               textOpened = true;
               Debug.Log("BASSS");
               //TIKLANINCA OLANLAR BURAYA KONULUR
-              Vector3 velocity = new Vector3(1f, 1f, 1.1f);
-              camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position, ref velocity, 1f);
+              camMoving = true;
         }
         
+    }
+    void moveCamera()
+    {
+        //Vector3 target = new Vector3(transform.position.x + 30, camera.transform.position.y, 
+        camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position, ref velocity, 1f);
+        if (Vector3.Distance(camera.transform.position, transform.position) < 0.01f)
+        {
+            camera.transform.position = transform.position;
+            velocity = Vector3.zero;
+            camMoving = false;
+        }
     }
 }
