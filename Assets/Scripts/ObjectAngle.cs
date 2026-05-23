@@ -31,10 +31,10 @@ public class ObjectAngle : MonoBehaviour {
 
         var angle = cameraManager.endValue;
 
-        if (angle < 45.0f) spriteRenderer.sprite = N;
-        else if (angle < 135.0f) spriteRenderer.sprite = E;
-        else if (angle < 225.0f) spriteRenderer.sprite = W;
-        else spriteRenderer.sprite = S;
+        if (angle < 45.0f) Debug.Log("north");
+        else if (angle < 135.0f) Debug.Log("east");
+        else if (angle < 225.0f) Debug.Log("south");
+        else Debug.Log("west");
 
     }
 
