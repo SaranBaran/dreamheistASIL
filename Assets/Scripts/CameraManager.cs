@@ -24,6 +24,7 @@ public class CameraManager : MonoBehaviour
 
 
     #endregion
+    public float endValue = 0.0f;
 
     void Start()
     {
@@ -101,7 +102,7 @@ public class CameraManager : MonoBehaviour
     
     private Vector3 SnappedVector()
     {
-        var endValue = 0.0f;
+        
         var currentY = Mathf.Ceil(transform.rotation.eulerAngles.y);
 
         endValue = currentY switch
