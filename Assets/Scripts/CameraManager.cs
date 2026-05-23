@@ -20,8 +20,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Vector2 minmax = new Vector2(1,20);
     [SerializeField]private float multiplier = 2f, smoothTime = .1f;
     private float velocity = 0f;
-
-
+    private Vector3 velocity_vec = new Vector3(0f, 0f, 0f);
+    private bool camMoving = false;
 
     #endregion
 
@@ -114,4 +114,16 @@ public class CameraManager : MonoBehaviour
 
         return new Vector3(_xRotation, endValue, 0.0f);
     }
+    public void moveCamera(Transform playerTransform)
+    {
+        //Vector3 target = new Vector3(transform.position.x + 30, camera.transform.position.y, 
+        transform.position = Vector3.SmoothDamp(transform.position, playerTransform.position, ref velocity_vec, 1f);
+        if (Vector3.Distance(transform.position, playerTransform.position) < 0.01f)
+        {
+            transform.position = playerTransform.position;
+            velocity_vec = Vector3.zero;
+            camMoving = false;
+        }
+    }
+
 }
