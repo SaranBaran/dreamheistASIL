@@ -691,6 +691,7 @@ MonoBehaviour:
   minmax: {x: 1, y: 20}
   multiplier: 2
   smoothTime: 0.1
+  endValue: 0
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,6 +1472,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1121343891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1121343893}
+  - component: {fileID: 1121343892}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1121343892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121343891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b0a12cfac87be4c8d08f5104c7c5c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 330585545}
+  playerPanel: {fileID: 776775192}
+--- !u!4 &1121343893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121343891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.762356, y: -6.8017254, z: 30.168468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1585668004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,8 +1887,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeText: {fileID: 1750058814}
-  panel: {fileID: 776775192}
-  camera: {fileID: 330585545}
   dragSpeed: 2
 --- !u!114 &1806571501
 MonoBehaviour:
@@ -1880,7 +1925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1979789228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,8 +1956,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeText: {fileID: 285017184}
-  panel: {fileID: 776775192}
-  camera: {fileID: 330585545}
   dragSpeed: 2
 --- !u!65 &1979789230
 BoxCollider:
@@ -2017,3 +2060,4 @@ SceneRoots:
   - {fileID: 286814761}
   - {fileID: 562919157}
   - {fileID: 450801103}
+  - {fileID: 1121343893}

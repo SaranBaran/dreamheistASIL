@@ -25,6 +25,7 @@ public class CameraManager : MonoBehaviour
 
     #endregion
     public float endValue = 0.0f;
+    private Transform playerTransform;
 
     void Start()
     {
@@ -41,10 +42,15 @@ public class CameraManager : MonoBehaviour
              camera.orthographicSize -= 1;
          }
          */
-        zoomTarget -= Input.GetAxisRaw("Mouse ScrollWheel")*multiplier;
-        zoomTarget = Mathf.Clamp(zoomTarget, minmax.x, minmax.y);
-        camera.orthographicSize = Mathf.SmoothDamp(camera.orthographicSize, zoomTarget,
-        ref velocity, smoothTime);
+        if (camMoving)
+        {
+            moveCamera();
+        }
+            zoomTarget -= Input.GetAxisRaw("Mouse ScrollWheel")*multiplier;
+            zoomTarget = Mathf.Clamp(zoomTarget, minmax.x, minmax.y);
+            camera.orthographicSize = Mathf.SmoothDamp(camera.orthographicSize, zoomTarget,
+            ref velocity, smoothTime);
+
     }
     private void Awake()
     {
@@ -76,18 +82,19 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_isMoving)
-        {
-            var position = transform.right * (_delta.x * -movementSpeed);
-            position += transform.up * (_delta.y * -movementSpeed);
-            transform.position += position * Time.deltaTime;
+        if(!camMoving){
+            if (_isMoving)
+            {
+                var position = transform.right * (_delta.x * -movementSpeed);
+                position += transform.up * (_delta.y * -movementSpeed);
+                transform.position += position * Time.deltaTime;
+            }
         }
-
-        if (_isRotating)
-        {
-            transform.Rotate(new Vector3(_xRotation, -_delta.x * rotationSpeed, 0.0f));
-            transform.rotation = Quaternion.Euler(_xRotation, transform.rotation.eulerAngles.y, 0.0f);
-        }
+            if (_isRotating)
+            {
+                transform.Rotate(new Vector3(_xRotation, -_delta.x * rotationSpeed, 0.0f));
+                transform.rotation = Quaternion.Euler(_xRotation, transform.rotation.eulerAngles.y, 0.0f);
+            }
     }
 
     private void SnapRotation()
@@ -115,7 +122,7 @@ public class CameraManager : MonoBehaviour
 
         return new Vector3(_xRotation, endValue, 0.0f);
     }
-    public void moveCamera(Transform playerTransform)
+    public void moveCamera()
     {
         //Vector3 target = new Vector3(transform.position.x + 30, camera.transform.position.y, 
         transform.position = Vector3.SmoothDamp(transform.position, playerTransform.position, ref velocity_vec, 1f);
@@ -125,6 +132,15 @@ public class CameraManager : MonoBehaviour
             velocity_vec = Vector3.zero;
             camMoving = false;
         }
+    }
+    public void setCameraMove(Transform playTrans)
+    {
+        camMoving = true;
+        playerTransform = playTrans;
+    }
+    public bool isCamMoving()
+    {
+        return camMoving;
     }
 
 }
