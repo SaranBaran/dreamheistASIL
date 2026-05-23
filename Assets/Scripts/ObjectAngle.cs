@@ -29,12 +29,12 @@ public class ObjectAngle : MonoBehaviour {
     public void Update()
     {
 
-        var angle = cameraManager.endValue;
+     var angle = cameraManager.snappedRotation;
 
-        if (angle < 45.0f) Debug.Log("north");
-        else if (angle < 135.0f) Debug.Log("east");
-        else if (angle < 225.0f) Debug.Log("south");
-        else Debug.Log("west");
+       if (angle == new Vector3(30.00f, 45.00f, 0.00f)) spriteRenderer.sprite = N;
+       else if (angle == new Vector3(30.00f, 135.00f, 0.00f)) spriteRenderer.sprite = E;
+       else if (angle == new Vector3 (30.00f, 225.00f, 0.00f)) spriteRenderer.sprite = S;
+       else spriteRenderer.sprite = W;
 
     }
 

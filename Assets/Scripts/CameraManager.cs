@@ -26,6 +26,7 @@ public class CameraManager : MonoBehaviour
     #endregion
     public float endValue = 0.0f;
     private Transform playerTransform;
+    public Vector3 snappedRotation;
 
     void Start()
     {
@@ -120,7 +121,9 @@ public class CameraManager : MonoBehaviour
             _ => 315.0f
         };
 
-        return new Vector3(_xRotation, endValue, 0.0f);
+        snappedRotation = new Vector3(_xRotation, endValue, 0.0f);
+        //Debug.Log(snappedRotation);
+        return snappedRotation;
     }
     public void moveCamera()
     {
