@@ -51,6 +51,9 @@ TagManager:
   - name: Lamp
     uniqueID: 1504195805
     locked: 0
+  - name: Building2
+    uniqueID: 1367038487
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
