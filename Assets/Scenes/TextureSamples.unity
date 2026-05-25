@@ -1041,11 +1041,11 @@ MonoBehaviour:
   lockX: 0
   lockY: 0
   lockZ: 0
-  N: {fileID: 0}
-  W: {fileID: 0}
-  S: {fileID: 0}
-  E: {fileID: 0}
-  cameraManager: {fileID: 0}
+  N: {fileID: 21300000, guid: 9b5f5d7208732904d84522a0dba927b3, type: 3}
+  W: {fileID: 21300000, guid: 8bd10f020c60e6b499877690642adbe6, type: 3}
+  S: {fileID: 21300000, guid: 8bd10f020c60e6b499877690642adbe6, type: 3}
+  E: {fileID: 21300000, guid: 9b5f5d7208732904d84522a0dba927b3, type: 3}
+  cameraManager: {fileID: 1380026196}
 --- !u!1 &1564164569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22b37e319ac518e45b640453c3c1ee43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6029e4f4465195a4f8813f40f9ec0e5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1370,8 +1370,8 @@ MonoBehaviour:
   lockZ: 0
   N: {fileID: 21300000, guid: 6029e4f4465195a4f8813f40f9ec0e5a, type: 3}
   W: {fileID: 21300000, guid: 42e6024f40b83f94cae262db0b88319b, type: 3}
-  S: {fileID: 21300000, guid: 22b37e319ac518e45b640453c3c1ee43, type: 3}
-  E: {fileID: 21300000, guid: 22b37e319ac518e45b640453c3c1ee43, type: 3}
+  S: {fileID: 21300000, guid: 56ef42c88b29d234f8adab5d5bc8fe6d, type: 3}
+  E: {fileID: 21300000, guid: 56ef42c88b29d234f8adab5d5bc8fe6d, type: 3}
   cameraManager: {fileID: 1380026196}
 --- !u!1 &1691887660
 GameObject:

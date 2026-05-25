@@ -29,12 +29,26 @@ public class ObjectAngle : MonoBehaviour {
     public void Update()
     {
 
-     var angle = cameraManager.snappedRotation;
+        float angle = Camera.main.transform.eulerAngles.y;
 
-       if (angle == new Vector3(30.00f, 45.00f, 0.00f)) spriteRenderer.sprite = N;
-       else if (angle == new Vector3(30.00f, 135.00f, 0.00f)) spriteRenderer.sprite = E;
-       else if (angle == new Vector3 (30.00f, 225.00f, 0.00f)) spriteRenderer.sprite = S;
-       else spriteRenderer.sprite = W;
+        angle = (angle + 360f) % 360f;
+
+    if (angle >= 315f || angle < 45f)
+    {
+        spriteRenderer.sprite = N;
+    }
+    else if (angle >= 45f && angle < 135f)
+    {
+        spriteRenderer.sprite = E;
+    }
+    else if (angle >= 135f && angle < 225f)
+    {
+        spriteRenderer.sprite = S;
+    }
+    else
+    {
+        spriteRenderer.sprite = W;
+    }
 
     }
 

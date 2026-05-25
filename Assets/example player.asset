@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: example player
   m_EditorClassIdentifier: 
   playerName: NeirAdam
-  playerPhrase: Sikiyorsa Soy Lan
+  playerPhrase: "bask\u0131n basan\u0131nd\u0131r"
   houseSprite: {fileID: 0}
   currency: 5
   timeToRob: 24
